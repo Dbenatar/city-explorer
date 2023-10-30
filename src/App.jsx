@@ -35,7 +35,7 @@ function App() {
       <h1>Location API's</h1>
       <form onSubmit={getLocation}>
         <input onChange={handleChange} placeholder="Location" />
-        <button>Get Location</button>
+        <button>Explore!</button>
       </form>
 
       <h2>{location.display_name}</h2>
