@@ -14,16 +14,19 @@ function App() {
 
   async function getLocation(event) {
     event.preventDefault();
-  }
+  
 
-  const API = ``
+  const API = `https://us1.locationiq.com/v1/reverse?key=pk.565d77279560999ef98a0a1c4b420fd6&lat=40.7128&lon=-74.0060&format=json`;
+  
 
   const res = await axios.get(API);
 
+    setLocation(res.data[0]);
 
+  }
   return (
     <>
-      <h1>API's</h1>
+      <h1>Location API's</h1>
       <form onSubmit={getLocation}>
         <input onChange={handleChange} placeholder="Location" />
         <button>Get Location</button>
@@ -33,7 +36,7 @@ function App() {
 
 
     </>
-  )
+  );
 }
 
 export default App
