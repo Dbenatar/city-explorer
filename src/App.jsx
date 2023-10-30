@@ -16,14 +16,15 @@ function App() {
     event.preventDefault();
   
 
-  const API = `https://us1.locationiq.com/v1/reverse?key=pk.565d77279560999ef98a0a1c4b420fd6&lat=40.7128&lon=-74.0060&format=json`;
+  const API = `https://eu1.locationiq.com/v1/search?q=${search}&key=${API_KEY}&format=json`;
   
 
   const res = await axios.get(API);
 
     setLocation(res.data[0]);
-
+      console.log(res)
   }
+
   return (
     <>
       <h1>Location API's</h1>
