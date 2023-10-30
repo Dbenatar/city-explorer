@@ -7,10 +7,15 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 function App() {
   const [location, setLocation] = useState({});
   const [search, setSearch] = useState("");
+  // const [map, setMap] = useState();
 
   function handleChange(event) {
     setSearch(event.target.value);
   }
+
+  // function handleMap(event) {
+  //   setMap(event.map.value)
+  // }
 
   async function getLocation(event) {
     event.preventDefault();
@@ -34,6 +39,8 @@ function App() {
       </form>
 
       <h2>{location.display_name}</h2>
+      <h2>{location.lat}</h2>
+      <h2>{location.lon}</h2>
 
 
     </>
