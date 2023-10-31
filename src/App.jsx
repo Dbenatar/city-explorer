@@ -7,15 +7,11 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 function App() {
   const [location, setLocation] = useState({});
   const [search, setSearch] = useState("");
-  // const [map, setMap] = useState();
+  const [number, setNumber] = useState(10);
 
   function handleChange(event) {
     setSearch(event.target.value);
   }
-
-  // function handleMap(event) {
-  //   setMap(event.map.value)
-  // }
 
   async function getLocation(event) {
     event.preventDefault();
@@ -27,7 +23,11 @@ function App() {
   const res = await axios.get(API);
 
     setLocation(res.data[0]);
-      console.log(res)
+    
+  }
+
+  function handleNumber(mod) {
+    setNumber(number + mod);
   }
 
   return (
@@ -38,13 +38,22 @@ function App() {
         <button>Explore!</button>
       </form>
 
+{location.lat && (
+  <div>
+    <button onClick={() => handleNumber(-1)}>-</button>
+    <span>{number}</span>
+    <button onClick={() => handleNumber(+1)}>+</button>
+
+    <img 
+    src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${location.lat},${location.lon}&zoom=${number}&format=png`} />
+      </div>
+      )}
       <h2>{location.display_name}</h2>
       <h2>{location.lat}</h2>
       <h2>{location.lon}</h2>
-
 
     </>
   );
 }
 
-export default App
+export default App;
