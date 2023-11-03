@@ -23,6 +23,12 @@ function App() {
     getWeather(res.data[0]);
   }
 
+  async function getWeather(tempLocation) {
+    const API = `http://localhost:8080/weather?lat${tempLocation.lat}&lon=${tempLocation.lon}&searchQuery=${search}`;
+    const res = await axios.get(API);
+    setWeather(res.data);
+  }
+
   function handleNumber(mod) {
     setNumber(number + mod);
   }
